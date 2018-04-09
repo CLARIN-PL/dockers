@@ -14,6 +14,8 @@ RUN curl -O https://download.jboss.org/wildfly/${VERSION}/wildfly-${VERSION}.zip
     && chmod a+x ${WILDFLY_HOME}/bin/standalone.sh \
     && chmod -R a+rw ${INSTALL_DIR}
 USER serveradmin
+RUN rm ${WILDFLY_HOME}/bin/standalone.conf
+ADD standalone.conf ${WILDFLY_HOME}/bin/
 ENTRYPOINT ${WILDFLY_HOME}/bin/standalone.sh -c standalone-ee8.xml -b=0.0.0.0 -bmanagment=0.0.0.0
 EXPOSE 8080 9990
 
