@@ -15,7 +15,7 @@ RUN echo "=> Starting WildFly server" && \
     echo "=> Adding MySQL module" && \
       $WILDFLY_CLI --connect --command="module add --name=com.mysql.driver --resources=/tmp/mysql-connector-java-${MYSQL_VERSION}.jar --dependencies=javax.api,javax.transaction.api" && \
     echo "=> Adding MySQL driver" && \
-      $WILDFLY_CLI --connect --command="/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql.driver,driver-class-name=com.mysql.jdbc.Driver)" && \
+      $WILDFLY_CLI --connect --command="/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql.driver,driver-class-name=com.mysql.cj.jdbc.Driver)" && \
     echo "=> Shutting down WildFly and Cleaning up" && \
       $WILDFLY_CLI --connect --command=":shutdown" && \
       rm -rf $WILDFLY_HOME/standalone/configuration/standalone_xml_history/ $WILDFLY_HOME/standalone/log/* && \
