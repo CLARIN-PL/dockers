@@ -3,7 +3,7 @@ MAINTAINER Tomasz Naskręt, tomasz.naskret@pwr.edu.pl
 
 # Install Java.
 
-RUN apt-get update && apt-get upgrade -y && apt-get -y install software-properties-common python-software-properties xmlstarlet bsdtar unzip curl
+RUN apt-get update && apt-get upgrade -y && apt-get -y install software-properties-common python-software-properties xmlstarlet bsdtar unzip curl netcat
 
 RUN \
   echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
